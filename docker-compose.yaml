@@ -1,0 +1,54 @@
+services:
+  mysql:
+    build: ./mysql
+    image: mysql8.0
+    container_name: mysql8.0
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - custom_network
+
+  rabbitmq:
+    build: ./rabbit
+    image: rabbitmq
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+      - "15673:15673"
+      - "15674:15674"
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+      - ./rabbit/certs:/home/certs
+      - ./rabbit/conf:/etc/rabbitmq/conf.d
+    environment:
+      RABBITMQ_DEFAULT_USER: snc
+      RABBITMQ_DEFAULT_PASS: snc123!
+    networks:
+      - custom_network
+
+  tomcat:
+    build: ./tomcat
+    image: tomcat
+    container_name: tomcat
+    ports:
+      - "8081:8080"
+    restart: always
+    depends_on:
+      - mysql
+      - rabbitmq
+    # entrypoint: ["/usr/local/bin/wait-for-mysql.sh", "localhost", "--", "catalina.sh", "run"]
+    networks:
+      - custom_network
+
+volumes:
+  mysql_data:
+  rabbitmq_data:
+
+networks:
+  custom_network:
+    driver: bridge

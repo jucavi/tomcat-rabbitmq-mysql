@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!-- The contents of this file will be loaded for each web application -->
+<!-- The contents of this file will be loaded for each web application -->
+<Context>
+
+    <!-- Default set of monitored resources. If one of these changes, the    -->
+    <!-- web application will be reloaded.                                   -->
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+    <WatchedResource>WEB-INF/tomcat-web.xml</WatchedResource>
+    <WatchedResource>${catalina.base}/conf/web.xml</WatchedResource>
+
+    <!-- Uncomment this to disable session persistence across Tomcat restarts -->
+    <!--
+    <Manager pathname="" />
+    -->
+
+    <Environment name="allowedOrigins" value="http://localhost:3001,http://localhost:3000,http://localhost:8080,http://localhost:8080" type="java.lang.String" override="false"/>
+
+    <ResourceLink name="jndi/myFactory" global="jndi/myFactory" type="javax.sql.DataSource"/>
+
+    <ResourceLink name="jndi/visualSGA" global="jndi/visualSGA" type="javax.sql.DataSource"/>
+
+    <ResourceLink name="jndi/visualTracking" global="jndi/visualTracking" type="javax.sql.DataSource"/>
+
+    <ResourceLink name="jndi/mysql" global="jndi/mysql" type="javax.sql.DataSource"/>
+
+    <!-- <ResourceLink name="jndi/notifications" global="jndi/notifications" type="javax.sql.DataSource" /> -->
+
+    <!-- Visual Tracking API config variables -->
+    <Environment name="emiBaseUrl" value="http://localhost:8080" type="java.lang.String" override="false"/>
+
+    <Environment name="vtBoardUrl" value="http://localhost:8080/snc-vt-api/board/clients/%s" type="java.lang.String" override="false"/>
+
+    <Environment name="vtCommercialUrl" value="http://localhost:8080/snc-vt-api/commercial/clients/%s" type="java.lang.String" override="false"/>
+
+    <Environment name="vtProductionUrl" value="http://localhost:8080/snc-vt-api/production/clients/%s" type="java.lang.String" override="false"/>
+
+    <Environment name="vtValidationUrl" value="http://localhost:8080/snc-vt-api/validation/clients/%s" type="java.lang.String" override="false"/>
+
+    <Environment name="notificationUrl" value="http://localhost:8080/snc-notifications-api" type="java.lang.String" override="false"/>
+
+    <Environment name="securityUrl" value="http://localhost:8080/snc-security-ws" type="java.lang.String" override="false"/>
+
+    <Environment name="bomUrl" value="http://localhost:8080/snc-bom-api" type="java.lang.String" override="false"/>
+
+    <Environment name="documentManagerUrl" value="http://localhost:8080/snc-document-manager-api" type="java.lang.String" override="false"/>
+
+    <Environment name="myFactoryUrl" value="http://localhost:8080/snc-mf-api" type="java.lang.String" override="false"/>
+
+    <Environment name="digitalPeopleUrl" value="http://localhost:8080/snc-dp-api/clients/%d" type="java.lang.String" override="false"/>
+
+    <Environment name="webSocketUrl" value="ws://localhost:15674/ws" type="java.lang.String" override="false"/>
+
+    <Environment name="mfAutomaticStopType" value="1" type="java.lang.Long" override="false"/>
+
+    <Environment name="automaticStops" value="false" type="java.lang.Boolean" override="false"/>
+
+    <Environment name="vtGenerateModelingDependencies" value="true" type="java.lang.Boolean" override="false"/>
+
+    <Environment name="vtMainClient" value="1" type="java.lang.Long" override="false"/>
+
+    <Environment name="disableBatchValidationOnUpdate" value="true" type="java.lang.Boolean" override="false"/>
+
+    <Environment name="vtAutomaticCost" value="false" type="java.lang.Boolean" override="false"/>
+
+    <Environment name="vtManufacturingOperatorCertificationSequenceMode" value="false" type="java.lang.Boolean" override="false"/>
+
+    <Environment name="vtAutomaticCostTypesAllowed" value="NONE" type="java.lang.String" override="false"/>
+
+    <Environment name="securityUser" value="root" type="java.lang.String" override="false"/>
+
+    <Environment name="securityPassword" value="root" type="java.lang.String" override="false"/>
+
+    <Environment name="tokenRefresh" value="300" type="java.lang.Long" override="false"/>
+
+    <Environment name="vtOperatorValidation" value="true" type="java.lang.Boolean" override="false"/>
+
+    <Environment name="vtAutomaticCostTypesAllowed" value="MATERIAL,INSTRUMENT,RESOURCE_DIRECT,MACHINE" type="java.lang.String" override="false"/>
+
+    <!-- Valuation API config variables -->
+    <Environment name="visualTrackingUrl" value="http://localhost:8080/snc-vt-master-api" type="java.lang.String" override="false"/>
+
+    <Environment name="visualTrackingComercialFlow" value="3" type="java.lang.Long" override="false"/>
+
+    <Environment name="visualTrackingProductionFlow" value="4" type="java.lang.Long" override="false"/>
+
+    <Environment name="visualTrackingBudgetStep" value="17" type="java.lang.Long" override="false"/>
+
+    <Environment name="visualTrackingModelingStep" value="20" type="java.lang.Long" override="false"/>
+
+    <Environment name="visualTrackingManufacturingStep" value="22" type="java.lang.Long" override="false"/>
+
+    <Environment name="visualTrackingExternalOrderFieldName" value="Pedido eXpertis" type="java.lang.String" override="false"/>
+
+    <!-- Reporting API config variables -->
+
+    <Environment name="reportingLogoPath" value="c:/opt/tools/tomcat/latest/images/emi-logo.svg" type="java.lang.String" override="false"/>
+
+    <!-- RabbitAMQP config -->
+
+    <Environment name="springRabbitmqHost" value="localhost" type="java.lang.String" override="false"/>
+
+    <Environment name="springRabbitmqPort" value="5672" type="java.lang.Long" override="false"/>
+
+    <Environment name="springRabbitmqUsername" value="snc" type="java.lang.String" override="false"/>
+
+    <Environment name="springRabbitmqPassword" value="snc123!" type="java.lang.String" override="false"/>
+
+    <Environment name="springRabbitmqSslEnabled" value="false" type="java.lang.Boolean" override="false"/>
+
+    <Environment name="reportingUrl" value="http://localhost:8080/snc-jr-reporting-api" type="java.lang.String" override="false"/>
+
+    <!-- Printer data config -->
+    <Environment name="vtManufacturingLabelRouteMin" value="true" type="java.lang.Boolean" override="false"/>
+
+    <Environment name="mfManufacturingLabelWorkstationName" value="true" type="java.lang.Boolean" override="false"/>
+
+    <Environment name="securityManufacturingLabelUserName" value="true" type="java.lang.Boolean" override="false"/>
+
+    <Environment name="mfManufacturingLabelMeasureUnitName" value="true" type="java.lang.Boolean" override="false"/>
+
+    <Environment name="mfManufacturingLabelMaterialFieldValueName" value="true" type="java.lang.Boolean" override="false"/>
+
+    <Environment name="mfManufacturingLabelCustomFieldName" value="true" type="java.lang.Boolean" override="false"/>
+
+    <Environment name="emiDocumentManagerUrl" value="http://localhost:8080/emisuite-documentmanager-api" type="java.lang.String" override="false"/>
+
+    <Environment name="easyGmaoUrl" value="http://localhost:8080/snc-eg-api" type="java.lang.String" override="false"/>
+
+</Context>

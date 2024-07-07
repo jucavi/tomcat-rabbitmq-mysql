@@ -1,0 +1,8 @@
+services:
+  tomcat:
+    build: .
+    image: tomcat
+    container_name: tomcat
+    ports:
+      - "8081:8080"
+    restart: always

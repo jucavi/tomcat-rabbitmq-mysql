@@ -1,0 +1,20 @@
+services:
+  rabbitmq:
+    build: .
+    image: rabbitmq
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+      - "15673:15673"
+      - "15674:15674"
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+      - ./certs:/home/certs
+      - ./conf:/etc/rabbitmq/conf.d
+    environment:
+      RABBITMQ_DEFAULT_USER: snc
+      RABBITMQ_DEFAULT_PASS: snc123!
+
+volumes:
+  rabbitmq_data:
